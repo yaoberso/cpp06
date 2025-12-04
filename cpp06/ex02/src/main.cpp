@@ -1,10 +1,10 @@
 #include "../include/Base.hpp"
 #include <cstdlib>
-#include <typeinfo>
 
 Base * generate(void)
 {
-	int val = rand()%3;
+	srand(time(0));
+	int val = rand()%4;
 	if(val == 0)
 	{
 		std::cout << "Class A generate!" << std::endl;
@@ -15,21 +15,24 @@ Base * generate(void)
 		std::cout << "Class B generate!" << std::endl;
 		return new B();
 	}
-	std::cout << "Class C generate!" << std::endl;
-	return new C();
+	else
+	{
+		std::cout << "Class C generate!" << std::endl;
+		return new C();
+	}
 }
 
 void identify(Base* p)
 {
-	if (dynamic_cast<A&>(p) != NULL)
+	if (dynamic_cast<A*>(p) != NULL)
 	{
 		std::cout << "Type: A" << std::endl;
 	}
-	if (p == new B)
+	if (dynamic_cast<B*>(p) != NULL)
 	{
 		std::cout << "Type: B" << std::endl;
 	}
-	if (p == new C)
+	if (dynamic_cast<C*>(p) != NULL)
 	{
 		std::cout << "Type: C" << std::endl;
 	}
@@ -37,24 +40,33 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-	if (dynamic_cast<A&>(p) != NULL)
+	try
 	{
-		std::cout << "Type: " << typeid(p).name() << std::endl;
+		(void)dynamic_cast<A&>(p);
+		std::cout << "Type: A" << std::endl;
+		return;
 	}
-	if (b == new B)
+	catch(std::bad_cast& e) {}
+	try
 	{
-		std::cout << "Type: " << typeid(p).name() << std::endl;
+		(void)dynamic_cast<B&>(p);
+		std::cout << "Type: B" << std::endl;
+		return;
 	}
-	if (b == new C)
+	catch(std::bad_cast& e) {}
+	try
 	{
-		std::cout << "Type: " << typeid(p).name() << std::endl;
+		(void)dynamic_cast<C&>(p);
+		std::cout << "Type: C" << std::endl;
+		return;
 	}
+	catch(std::bad_cast& e) {}
 }
 
 int main()
 {
 	Base *b = generate();
 	identify(b);
-	identify(b);
+	identify(*b);
 	return (0);
 }
