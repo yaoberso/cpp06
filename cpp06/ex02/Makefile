@@ -1,8 +1,8 @@
-NAME    = converter
+NAME    = ex00
 CC      = c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
 
-SRCS    =  src/main.cpp src/ScalarConverter.cpp
+SRCS    =  src/main.cpp src/Base.cpp
 OBJS    = $(SRCS:.cpp=.o)
 
 all: $(NAME)

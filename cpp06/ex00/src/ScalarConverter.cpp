@@ -56,6 +56,7 @@ void printAllType(char c, int i, float f, double d)
 void convertFromChar(const std::string &str)
 {
     char c;
+    if (str.length() == 3)
         c = str[1];
     else
         c = str[0];
@@ -103,7 +104,6 @@ void convertFromInt(const std::string &str)
         f = static_cast<float>(i);
         d = static_cast<double>(i);
     }
-    
     printAllType(c, i, f, d);
 }
 
@@ -152,6 +152,7 @@ void convertFromFloat(const std::string &str)
     
     printAllType(c, i, f, d);
 }
+
 
 void convertFromDouble(const std::string &str)
 {
