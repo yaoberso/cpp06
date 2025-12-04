@@ -4,7 +4,11 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdint.h>
-#include "Data.hpp"
+
+struct Data
+{
+	int data;
+};
 
 class Serializer {
 	public:
