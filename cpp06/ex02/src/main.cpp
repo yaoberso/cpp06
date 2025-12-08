@@ -46,21 +46,21 @@ void identify(Base& p)
 		std::cout << "Type: A" << std::endl;
 		return;
 	}
-	catch(std::bad_cast& e) {}
+	catch(std::exception &e) {}
 	try
 	{
 		(void)dynamic_cast<B&>(p);
 		std::cout << "Type: B" << std::endl;
 		return;
 	}
-	catch(std::bad_cast& e) {}
+	catch(std::exception &e) {}
 	try
 	{
 		(void)dynamic_cast<C&>(p);
 		std::cout << "Type: C" << std::endl;
 		return;
 	}
-	catch(std::bad_cast& e) {}
+	catch(std::exception &e) {}
 }
 
 int main()

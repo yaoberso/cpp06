@@ -14,7 +14,7 @@ static bool int_status = 0;
 static bool float_status = 0;
 static bool double_status = 0;
 
-void printAllType(char c, int i, float f, double d)
+void ScalarConvert::printAllType(char c, int i, float f, double d)
 {
     std::cout << std::fixed << std::setprecision(1);
 
@@ -53,7 +53,7 @@ void printAllType(char c, int i, float f, double d)
         std::cout << d << std::endl;
 }
 
-void convertFromChar(const std::string &str)
+void ScalarConvert::convertFromChar(const std::string &str)
 {
     char c;
     if (str.length() == 3)
@@ -71,7 +71,7 @@ void convertFromChar(const std::string &str)
     printAllType(c, i, f, d);
 }
 
-void convertFromInt(const std::string &str)
+void ScalarConvert::convertFromInt(const std::string &str)
 {
     errno = 0; 
     char *endptr = NULL;
@@ -107,7 +107,7 @@ void convertFromInt(const std::string &str)
     printAllType(c, i, f, d);
 }
 
-void convertFromFloat(const std::string &str)
+void ScalarConvert::convertFromFloat(const std::string &str)
 {
     errno = 0; 
     char *endptr = NULL;
@@ -154,7 +154,7 @@ void convertFromFloat(const std::string &str)
 }
 
 
-void convertFromDouble(const std::string &str)
+void ScalarConvert::convertFromDouble(const std::string &str)
 {
     errno = 0; 
     char *endptr = NULL;

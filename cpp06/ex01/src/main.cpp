@@ -14,6 +14,6 @@ int main()
 	std::cout << "------------deserialize------------" << std::endl;
 	Data *a = Serializer::deserialize(u);
 	std::cout << "Data *: " << a << std::endl;
-	std::cout << a->data << std::endl;
+	std::cout << std::dec << a->data << std::endl;
 	return (0);
 }
