@@ -114,8 +114,12 @@ void ScalarConvert::convertFromFloat(const std::string &str)
     char c = '\0';
     int i = 0;
     double d = 0.0;
+
+    std::string str_without_f = str;
+    if (!str.empty() && str[str.length() - 1] == 'f')
+        str_without_f = str.substr(0, str.length() - 1);
     
-    float f = strtof(str.c_str(), &endptr);
+    float f = strtof(str_without_f.c_str(), &endptr);
 
     if (errno == ERANGE || *endptr != '\0')
     {
@@ -281,14 +285,10 @@ type ScalarConvert::FindType(const std::string &str)
 
     if (has_f_suffix)
     {
-        if (i == 1 && has_f_suffix)
-        {
-            if (str.length() == 2 && (str[0] == '+' || str[0] == '-'))
-                return (INVALIDE);
-            if (str.length() == 1 && str[0] == 'f')
-                return (INVALIDE);
-        }
-        
+        if (str.length() == 1 && str[0] == 'f')
+            return (INVALIDE);
+        if (str.length() == 2 && (str[0] == '+' || str[0] == '-') && str[1] == 'f')
+            return (INVALIDE);
         return (FLOAT);
     }
     else if (vcount == 1)
