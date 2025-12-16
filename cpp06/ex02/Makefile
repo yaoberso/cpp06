@@ -1,4 +1,4 @@
-NAME    = ex00
+NAME    = Base
 CC      = c++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
 
